@@ -91,13 +91,13 @@
 			<div class="container">
 				<h3 class="text-center">List of Students</h3>
 				<hr>
-				<div class="container text-left">
+				<div class="container text-center .justify-content-md-center">
 
 					<a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add
 						New Student</a>
 				</div>
 				<br>
-				<table class="table table-bordered">
+				<table class="table table-bordered table-dark">
 					<thead>
 					<tr>
 						<th>ID</th>
@@ -106,6 +106,7 @@
 						<th>Gender</th>
 						<th>Date of Birth</th>
 						<th>Email Address</th>
+						<th>Customize</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -120,7 +121,7 @@
 							<td><c:out value="${student.date_of_birth}" /></td>
 							<td><c:out value="${student.email}" /></td>
 							<td><a href="edit?id=<c:out value='${student.id}' />">Edit</a>
-								&nbsp;&nbsp;&nbsp;&nbsp;
+<%--								&nbsp;&nbsp;&nbsp;&nbsp;--%>
 								<a href="delete?id=<c:out value='${student.id}' />">Delete</a>
 							</td>
 						</tr>

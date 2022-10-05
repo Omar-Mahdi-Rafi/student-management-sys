@@ -22,7 +22,7 @@
   <nav class="navbar navbar-expand-md navbar-dark"
        style="background-color: blue">
     <div>
-      <a href="https://www.xadmin.net" class="navbar-brand"> Student Management System </a>
+      <a href="https://localhost:8080/" class="navbar-brand"> Student Management System </a>
     </div>
 
     <ul class="navbar-nav">

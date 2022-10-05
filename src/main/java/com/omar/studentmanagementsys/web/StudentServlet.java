@@ -16,9 +16,9 @@ import com.omar.studentmanagementsys.bean.Student;
     This servlet acts as a page controller for the application, handling all
     requests from the user.
 */
-@WebServlet(name = "StudentServlet", value = "/StudentServlet")
+@WebServlet("/")
 public class StudentServlet extends HttpServlet {
-        //private static final long serialVersionSID = 1L;
+        private static final long serialVersionUID = 1L;
         private StudentDAO studentDAO;
 
     @Override
@@ -38,30 +38,47 @@ public class StudentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
 
-        try {
             switch (action) {
                 case "/new":
                     showNewForm(request, response);
                     break;
                 case "/insert":
-                    insertStudent(request, response);
+                    try {
+                        insertStudent(request, response);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     break;
+
                 case "/delete":
-                    deleteStudent(request, response);
+                    try {
+                        deleteStudent(request, response);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case "/edit":
-                    showEditForm(request, response);
+                    try {
+                        showEditForm(request, response);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case "/update":
-                    updateStudent(request, response);
+                    try {
+                        updateStudent(request, response);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 default:
-                    listStudent(request, response);
+                    try {
+                        listStudent(request, response);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     break;
             }
-        } catch (SQLException ex) {
-            throw new ServletException(ex);
-        }
     }
 
     private void listStudent(HttpServletRequest request, HttpServletResponse response)
@@ -122,7 +139,12 @@ public class StudentServlet extends HttpServlet {
         String email = request.getParameter("email");
 
         Student book = new Student(id, name, marks, gender, date_of_birth, email);
-        studentDAO.updateStudent(book);
+        System.out.println(book);
+        try {
+            studentDAO.updateStudent(book);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         response.sendRedirect("list");
     }
 
