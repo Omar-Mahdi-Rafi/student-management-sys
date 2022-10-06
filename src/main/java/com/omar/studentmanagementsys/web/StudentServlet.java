@@ -131,14 +131,14 @@ public class StudentServlet extends HttpServlet {
     //Update Student information
     private void updateStudent(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
+//        int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         String marks = request.getParameter("marks");
         String gender = request.getParameter("gender");
         String date_of_birth = request.getParameter("date_of_birth");
         String email = request.getParameter("email");
 
-        Student book = new Student(id, name, marks, gender, date_of_birth, email);
+        Student book = new Student( name, marks, gender, date_of_birth, email);
         System.out.println(book);
         try {
             studentDAO.updateStudent(book);
@@ -155,7 +155,6 @@ public class StudentServlet extends HttpServlet {
 
         try{
             studentDAO.deleteStudent(id);
-
         } catch (Exception e){
             e.printStackTrace();
         }

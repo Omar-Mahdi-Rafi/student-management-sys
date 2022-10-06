@@ -38,7 +38,8 @@ public class StudentDAO {
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/smsDB", "postgres", "admin123");
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        }
+        catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return connection;
@@ -68,7 +69,7 @@ public class StudentDAO {
         //Establishing a Connection
         try (Connection connection = getConnection();
              //Create a statement using connection object
-             PreparedStatement ps = connection.prepareStatement(SELECT_STUDENT_BY_ID);) {
+             PreparedStatement ps = connection.prepareStatement(SELECT_STUDENT_BY_ID)) {
             ps.setInt(1, id);
             System.out.println(ps);
             //Execute the query or update query
@@ -99,7 +100,7 @@ public class StudentDAO {
         try (Connection connection = getConnection();
 
              //Create a statement using connection object
-             PreparedStatement ps = connection.prepareStatement(SELECT_ALL_STUDENTS);) {
+             PreparedStatement ps = connection.prepareStatement(SELECT_ALL_STUDENTS)) {
             System.out.println(ps);
             //Execute the query or update query
             ResultSet rs = ps.executeQuery();

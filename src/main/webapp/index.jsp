@@ -7,7 +7,7 @@
 	  response.sendRedirect("login.jsp");
   }
 %>
-
+<%@ page isELIgnored="false"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +91,7 @@
 			<div class="container">
 				<h3 class="text-center">List of Students</h3>
 				<hr>
-				<div class="container text-center .justify-content-md-center">
+				<div class="container text-center">
 
 					<a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add
 						New Student</a>
