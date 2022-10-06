@@ -27,6 +27,7 @@ public class StudentDAO {
     private static final String DELETE_STUDENTS_SQL = "DELETE FROM students WHERE id = ?;";
     private static final String UPDATE_STUDENTS_SQL = "UPDATE students SET name = ?, marks= ?, gender =?, date_of_birth=?, email=? WHERE id = ?;";
 
+    private static final String CONVERT_TO_JSON = "SELECT row_to_json(students) FROM students;";
     public StudentDAO() {
 
     }
@@ -138,21 +139,26 @@ public class StudentDAO {
     //Updating (Editing student information)
     public boolean updateStudent(Student student) throws SQLException {
         // boolean value to store 'true' or 'false' value to confirm update
-        boolean rowUpdated;
+        System.out.println("StudentDAO updateStudent Method" + UPDATE_STUDENTS_SQL);
+        boolean rowUpdated=false;
         //Establishing a Connection with DataBase
-        try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement(UPDATE_STUDENTS_SQL);) {
+        try  {
+            Connection connection = getConnection();
+            PreparedStatement ps = connection.prepareStatement(UPDATE_STUDENTS_SQL);
             System.out.println("updated student:"+ps);
             //fetching student details from DataBase using getter method
-            ps.setInt(1, student.getId());
-            ps.setString(2, student.getName());
-            ps.setString(3, student.getMarks());
-            ps.setString(4, student.getGender());
-            ps.setString(5, student.getDate_of_birth());
-            ps.setString(6, student.getEmail());
+
+            ps.setString(1, student.getName());
+            ps.setString(2, student.getMarks());
+            ps.setString(3, student.getGender());
+            ps.setString(4, student.getDate_of_birth());
+            ps.setString(5, student.getEmail());
+            ps.setInt(6, student.getId());
 
             //Storing whether update is successful or not
             rowUpdated = ps.executeUpdate() > 0;
+        }catch (Exception exception){
+            System.out.println(exception.getStackTrace());
         }
         return rowUpdated;
     }
