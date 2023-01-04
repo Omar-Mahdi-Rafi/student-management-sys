@@ -18,4 +18,4 @@ Run Tomcat server to get started with using the SMS WebApp.
 
 ## Problems yet to be solved - 
 - The JSTL library doesn't work in the index.jsp and student-form.jsp due to some environment setup error. Though the .jar dependencies are integrated in the Tomcat web library. 
-  This causes and error while starting the project despite the right implementation of server side logics.
+  This causes an error while starting the project despite the right implementation of server side logics.
